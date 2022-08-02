@@ -5,8 +5,12 @@ from django.shortcuts import get_object_or_404
 from functions import get_duration, format_duration, is_visit_long
 from django.conf import settings
 
-visit_threshold = 25 # максимальная длительность визита установлена 25 минут
-TZ=settings.TIME_ZONE
+
+visit_threshold = 25   # максимальная длительность визита установлена 25 минут
+
+
+TZ = settings.TIME_ZONE
+
 
 def passcard_info_view(request, passcode):
     passcard = get_object_or_404(Passcard, passcode=passcode)
@@ -17,7 +21,10 @@ def passcard_info_view(request, passcode):
                                      'duration': format_duration(hours,
                                                                  minutes,
                                                                  seconds),
-                                     'is_strange': is_visit_long(visit, visit_threshold)
+                                     'is_strange': is_visit_long(
+                                                                visit, 
+                                                                visit_threshold
+                                                                )
                                      }
                                     )
     context = {
