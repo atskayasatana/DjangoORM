@@ -25,5 +25,5 @@ def format_duration(hours, minutes, seconds):
 
 def is_visit_long(visit, threshhold):
     hours, minutes, seconds = get_duration(visit)
-    return True if hours * 60 + minutes > threshhold else False
+    return hours * 60 + minutes > threshhold 
 
