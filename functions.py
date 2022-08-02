@@ -8,7 +8,7 @@ def get_duration(visit, TZ):
         left_time = current_time
     else:
         left_time = localtime(visit.leaved_at, pytz.timezone(TZ))
-    time_in_storage = (left_time - entered_time)
+    time_in_storage = left_time - entered_time
     seconds = time_in_storage.total_seconds()
     hours = round(seconds // 3600)
     minutes = round((seconds % 3600) // 60)
