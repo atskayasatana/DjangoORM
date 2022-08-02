@@ -2,8 +2,7 @@ from django.utils.timezone import localtime
 import pytz
 
 
-def get_duration(visit):
-    TZ = 'Europe/Moscow'
+def get_duration(visit, TZ):
     current_time = localtime(None, pytz.timezone(TZ))
     entered_time = localtime(visit.entered_at, pytz.timezone(TZ))
     if not visit.leaved_at:
