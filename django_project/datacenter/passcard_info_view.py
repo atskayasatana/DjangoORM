@@ -6,7 +6,7 @@ from functions import get_duration, format_duration, is_visit_long
 from django.conf import settings
 
 visit_threshold = 25 # максимальная длительность визита установлена 25 минут
-TZ=settings.TZ
+TZ=settings.TIME_ZONE
 
 def passcard_info_view(request, passcode):
     passcard = get_object_or_404(Passcard, passcode=passcode)
