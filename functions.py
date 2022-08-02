@@ -17,8 +17,8 @@ def get_duration(visit, TZ):
 
 
 def format_duration(hours, minutes, seconds):
-    s = f'{hours:02}:{minutes:02}:{seconds:02}'
-    return s
+    formated_duration = f'{hours:02}:{minutes:02}:{seconds:02}'
+    return formated_duration
 
 
 def is_visit_long(visit, threshhold):
