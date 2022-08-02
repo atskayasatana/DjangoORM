@@ -10,12 +10,12 @@ def storage_information_view(request):
         hours, minutes, seconds = get_duration(visit)
         none_closed_visits.append({'who_entered': visit.passcard.owner_name,
                                    'entered_at': visit.entered_at,
-                                   'duration': format_duration(hours, minutes, seconds)
+                                   'duration': format_duration(hours,
+                                                               minutes,
+                                                               seconds)
                                    }
                                   )
-
- 
     context = {
-        'non_closed_visits': none_closed_visits 
+        'non_closed_visits': none_closed_visits
     }
     return render(request, 'storage_information.html', context)
