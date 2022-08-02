@@ -3,7 +3,7 @@ from django_project.datacenter.models import Visit
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from functions import get_duration, format_duration, is_visit_long
-
+visit_threshold = 25 # максимальная длительность визита установлена 25 минут
 
 def passcard_info_view(request, passcode):
     passcard = get_object_or_404(Passcard, passcode=passcode)
@@ -14,7 +14,7 @@ def passcard_info_view(request, passcode):
                                      'duration': format_duration(hours,
                                                                  minutes,
                                                                  seconds),
-                                     'is_strange': is_visit_long(visit, 25)
+                                     'is_strange': is_visit_long(visit, visit_threshold)
                                      }
                                     )
     context = {
