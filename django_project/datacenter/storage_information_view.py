@@ -8,7 +8,8 @@ def storage_information_view(request):
     none_closed_visits = []
     for visit in Visit.objects.filter(leaved_at__isnull=True):
         hours, minutes, seconds = get_duration(visit)
-        none_closed_visits.append({'who_entered': visit.passcard.owner_name,
+        none_closed_visits.append({
+                                   'who_entered': visit.passcard.owner_name,
                                    'entered_at': visit.entered_at,
                                    'duration': format_duration(hours,
                                                                minutes,
