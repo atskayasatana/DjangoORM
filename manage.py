@@ -10,7 +10,6 @@ import pytz
 from dotenv import load_dotenv
 
 
-
 if __name__ == "__main__":
     load_dotenv()
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings") 
@@ -23,3 +22,4 @@ if __name__ == "__main__":
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+    
