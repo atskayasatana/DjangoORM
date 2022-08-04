@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-l36ov35x6^#(b3v0zf0up_9p_wz=5)f&mzgczn9+qa63fyrv5_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
@@ -69,20 +70,17 @@ TEMPLATES = [
     },
 ]
 
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'checkpoint',
-        'HOST': 'checkpoint.devman.org',
-        'PORT':'5434',
-        'USER': 'guard',
-        'PASSWORD':'osim5'
+        'ENGINE': os.getenv('ENGINE'),
+        'NAME': os.getenv('NAME'),
+        'HOST': os.getenv('HOST'),
+        'PORT': os.getenv('PORT'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD')
       
     }
 }
-
 
 
 # Internationalization
@@ -92,12 +90,9 @@ TIME_ZONE = 'Europe/Moscow'
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
                   
-SECRET_KEY = 'REPLACE_ME'
-
-
+SECRET_KEY = SECRET_KEY
