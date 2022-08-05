@@ -29,12 +29,20 @@
 3. Для работы с сайтом нужны настройки базы данных, которые нужно внести в .env файл.
    Настройки:
    
-   ```
+   ```Python3
       DB_SECRET_KEY = # ключ к базе данных
    
       DB_ENGINE= django.db.backends.postgresql_psycopg2 
-   
-      DB_URL = postgres://USER:PASSWORD@HOST:PORT/DB_NAME # внести настройки БД, которые предоставляются перед началом работы
+      '''
+      Настройки БД вносятся по шаблону ниже, postgres - менять не нужно, нужно прописать свои данные:
+      
+      USER - имя пользователя
+      PASSWORD - пароль
+      HOST - адрес хоста
+      PORT - номер порта
+      NAME - название таблицы
+      '''
+      DB_URL = postgres://USER:PASSWORD@HOST:PORT/NAME 
    
       DEBUG = FALSE # или TRUE
       
