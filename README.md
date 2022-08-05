@@ -12,33 +12,47 @@
  
   - в командной строке Anaconda создаем окружение:
     
-```
-    conda create -n djangoenv python=3.6 anaconda 
-```
+   ```
+       conda create -n djangoenv python=3.6 anaconda 
+   ```
  - активируем его: 
    
- ```
- conda activate djangoenv
- ```
+  ```
+    conda activate djangoenv
+  ```
  
  Если всё сделано правильно, то к названию оболочки добавится ещё djangoenv
  
  ![Создали и активировали окружение](https://github.com/atskayasatana/Images/blob/20dde0a58f69e6d5643b004ccf2d15d388d401c4/%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%20%D0%B2%20%D0%BF%D0%B0%D0%BF%D0%BA%D1%83%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0.png "Активировали окружение")
  
  
-3. Для работы с сайтом нужны настройки базы данных, которые нужно внести в .env файл. 
+3. Для работы с сайтом нужны настройки базы данных, которые нужно внести в .env файл.
+   Настройки:
+   
+   ```
+      DB_SECRET_KEY = # ключ к базе данных
+   
+      DB_ENGINE= django.db.backends.postgresql_psycopg2 
+   
+      DB_URL = postgres://USER:PASSWORD@HOST:PORT/DB_NAME # внести свои имя, пароль и другие настройки
+   
+      DEBUG = FALSE # или TRUE
+      
+      X_FRAME_OPTIONS = '*'
+
+      ALLOWED_HOSTS = # здесь нужно указать через запятую разрешенные сервера 
+   ```
+ 
 
 4. Переходим в папку проекта и загружаем необходимые библиотеки из файла requirements.txt 
-```
-pip install -r requirements.txt
-
-```
+   ```
+      pip install -r requirements.txt
+   ```
 
  5. Пишем в командной строке: 
-```
-python manage.py runserver 0.0.0.0:8000
-
-```
+   ```
+     python manage.py runserver 0.0.0.0:8000
+   ```
 
 Мы должны получить сообщение следующего вида:
 
