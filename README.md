@@ -34,7 +34,7 @@
    
       DB_ENGINE= django.db.backends.postgresql_psycopg2 
    
-      DB_URL = postgres://USER:PASSWORD@HOST:PORT/DB_NAME # внести свои имя, пароль и другие настройки
+      DB_URL = postgres://USER:PASSWORD@HOST:PORT/DB_NAME # внести настройки БД, которые предоставляются перед началом работы
    
       DEBUG = FALSE # или TRUE
       
