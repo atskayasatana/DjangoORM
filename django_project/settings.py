@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+from environs import Env
+
+env = Env()
+env.read_env()  
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,13 +26,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l36ov35x6^#(b3v0zf0up_9p_wz=5)f&mzgczn9+qa63fyrv5_'
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'DB_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['*']
-X_FRAME_OPTIONS = '*'
+DEBUG = env.bool("DEBUG", default=False)
+
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default='127.0.0.1')
+
+X_FRAME_OPTIONS = env.str('X_FRAME_OPTIONS')
 
 # Application definition
 
@@ -70,17 +78,11 @@ TEMPLATES = [
     },
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('ENGINE'),
-        'NAME': os.getenv('NAME'),
-        'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD')
-      
-    }
-}
+db_config = dj_database_url.config(default=env.str('DB_URL'))
+
+db_config['ENGINE'] = env.str('DB_ENGINE')
+
+DATABASES = {'default': db_config}
 
 
 # Internationalization
@@ -94,5 +96,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-                  
-SECRET_KEY = SECRET_KEY
