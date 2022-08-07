@@ -30,8 +30,6 @@
    Настройки:
    
    ```Python3
-      DB_SECRET_KEY = # ключ к базе данных
-   
       DB_ENGINE= django.db.backends.postgresql_psycopg2 
       '''
       Настройки БД вносятся по шаблону ниже, postgres - менять не нужно, нужно прописать свои данные:
@@ -56,8 +54,14 @@
    ```
       pip install -r requirements.txt
    ```
+5. Для начала работы нужен SECRET_KEY. Его нужно сгенерировать самостоятельно с помощью команды:
+   ```
+   python manage.py generate_secret_key
+   ```
+   В папке проекта появится текстовый файл secretkey.txt с уникальным ключом.  
+   Если ключ был сгенерирован ранее, то generate_secret_key возьмёт его из файла secretkey.txt. 
 
- 5. Пишем в командной строке: 
+ 6. Пишем в командной строке: 
    ```
      python manage.py runserver 0.0.0.0:8000
    ```
